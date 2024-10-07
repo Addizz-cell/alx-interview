@@ -5,7 +5,6 @@ N Queens puzzle: place N non-attacking queens on an NxN chessboard.
 
 import sys
 
-
 def is_safe(board, row, col):
     """Check if it's safe to place a queen at board[row][col]."""
     for i in range(row):
@@ -36,19 +35,22 @@ def nqueens(N):
     for solution in solutions:
         print(solution)
 
+# Main part of the script
+if __name__ == "__main__":
+    # Check if no argument or too many arguments are provided
+    if len(sys.argv) != 2:
+        print("Usage: nqueens N")
+        sys.exit(1)
 
-if len(sys.argv) != 2:
-    print("Usage: nqueens N")
-    sys.exit(1)
+    try:
+        N = int(sys.argv[1])
+    except ValueError:
+        print("N must be a number")
+        sys.exit(1)
 
-try:
-    N = int(sys.argv[1])
-except ValueError:
-    print("N must be a number")
-    sys.exit(1)
+    if N < 4:
+        print("N must be at least 4")
+        sys.exit(1)
 
-if N < 4:
-    print("N must be at least 4")
-    sys.exit(1)
-
-nqueens(N)
+    # Call the function to solve N queens puzzle
+    nqueens(N)
