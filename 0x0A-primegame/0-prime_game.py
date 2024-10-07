@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Prime Game
+Module: Game of choosing Prime numbers
 """
 
 
