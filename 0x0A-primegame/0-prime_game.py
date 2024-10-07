@@ -4,41 +4,48 @@ Prime Game
 """
 
 
-def primeNumbers(n):
-    """Return list of prime numbers between 1 and n inclusive
-       Args:
+def prime_numbers(n):
+    """
+    Return list of prime numbers between 1 and n inclusive.
+    
+    Args:
         n (int): upper boundary of range. lower boundary is always 1
     """
-    primeNos = []
+    prime_numbers = []
     filtered = [True] * (n + 1)
     for prime in range(2, n + 1):
-        if (filtered[prime]):
-            primeNos.append(prime)
+        if filtered[prime]:
+            prime_numbers.append(prime)
             for i in range(prime, n + 1, prime):
                 filtered[i] = False
-    return primeNos
+    return prime_numbers
 
 
-def isWinner(x, nums):
+def is_winner(x, nums):
     """
-    Determines winner of Prime Game
+    Determines winner of Prime Game.
+    
     Args:
-        x (int): no. of rounds of game
-        nums (int): upper limit of range for each round
-    Return:
-        Name of winner (Maria or Ben) or None if winner cannot be found
+        x (int): number of rounds of the game
+        nums (list of int): upper limit of range for each round
+    
+    Returns:
+        str: Name of the winner (Maria or Ben), or None if there is no winner
     """
     if x is None or nums is None or x == 0 or nums == []:
         return None
-    Maria = Ben = 0
+
+    maria = ben = 0
     for i in range(x):
-        primeNos = primeNumbers(nums[i])
-        if len(primeNos) % 2 == 0:
-            Ben += 1
+        prime_numbers_list = prime_numbers(nums[i])
+        if len(prime_numbers_list) % 2 == 0:
+            ben += 1
         else:
-            Maria += 1
-    if Maria > Ben:
+            maria += 1
+
+    if maria > ben:
         return 'Maria'
-    elif Ben > Maria:
+    elif ben > maria:
         return 'Ben'
+    
     return None
